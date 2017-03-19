@@ -1,7 +1,8 @@
+let path = require("path");
 module.exports = {
-    entry: "./entry.js",
+    entry: "./public/entry.js",
     output: {
-        path: __dirname,
+        path: path.resolve(__dirname + "/public"),
         filename: "bundle.js"
     },
     module: {
