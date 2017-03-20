@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^3.18.0",
+    "eslint-plugin-react": "^6.10.2",
     "webpack": "^2.2.1"
   },
   "dependencies": {
