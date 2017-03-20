@@ -6,17 +6,21 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "eslint":"eslint .",
+    "eslint": "eslint .",
     "webpack": "webpack -d --watch"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
     "eslint": "^3.18.0",
     "eslint-plugin-react": "^6.10.2",
     "webpack": "^2.2.1"
   },
   "dependencies": {
+    "babel-core": "^6.24.0",
     "express": "^4.15.2",
     "nodemon": "^1.11.0"
   }
