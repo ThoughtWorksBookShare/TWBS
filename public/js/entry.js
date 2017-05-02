@@ -1,4 +1,3 @@
-require("!style-loader!css-loader!./../style/style.css");
 import React from "react";
 import {render} from "react-dom";
 import {createStore, applyMiddleware} from "redux";
