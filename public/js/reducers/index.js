@@ -1,3 +1,4 @@
-/**
- * Created by baiying on 4/26/17.
- */
+import {combineReducers} from "redux";
+import signIn from "./signIn";
+
+export default combineReducers({signIn});

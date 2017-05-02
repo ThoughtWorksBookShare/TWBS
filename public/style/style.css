@@ -1,22 +1,14 @@
-body{
+body {
     /*background: yellow;*/
 }
-.input{
-    width: 50%;
-    height:50%;
-    margin-left: 20%;
-    margin-top: 20%;
-    line-height: 100%;
-    border: #fffebb solid 1px;
-}
-.signIn{
-    width: 50%;
-    height: 400px;
-    border: #9ecaff solid 1px;
-    margin-top: 200px;
-    margin-left: 300px;
-}
 
-.click{
-    text-align: center;
+.input {
+    width: 400px;
+    height: 300px;
+    margin: 10%;
+    border: #9ecaff solid 1px;
+}
+#tag {
+    color: red;
+    font-size: smaller;
 }
