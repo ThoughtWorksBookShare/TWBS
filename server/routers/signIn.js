@@ -3,7 +3,7 @@ const router = express.Router();
 const verifyInfo = require('../dbs/signIn');
 
 router.post('/verifyInfo', (req, res)=> {
-    verifyInfo(req,(result)=> {
+    verifyInfo(req, (result)=> {
         res.send(result)
     })
 })
