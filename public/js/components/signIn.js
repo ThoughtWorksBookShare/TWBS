@@ -1,4 +1,4 @@
-import"!style-loader!css-loader!./../../style/signIn.css";
+import "!style-loader!css-loader!./../../style/signIn.css";
 import React from "react";
 
 class SignIn extends React.Component {
@@ -18,14 +18,26 @@ class SignIn extends React.Component {
 
     render() {
 
-        return <div className="input">
-                <p>name:<input type="text" ref="name" onBlur={this.sign.bind(this)}/></p>
-                <br/><br/>
-                <p>password:<input type="text" ref="pass" onBlur={this.sign.bind(this)}/></p>
-                <p id='tag'></p>
-                <br/>
-                <button className="click" onClick={this.setTip.bind(this)}>登录</button>
+        return <div id="sign">
+            <h1>TWBS</h1>
+            <div id='op'></div>
+            <div className="input">
+                <div className="in"><img src="../../images/person.png" alt=""/><input type="text" id="in1" ref="name" onBlur={this.sign.bind(this)}
+                                                 placeholder="name"/></div>
+                <div className="in"><img src="../../images/password.png" alt=""/><input type="password" id="in2" ref="pass" onBlur={this.sign.bind(this)}
+                                                    placeholder="password"/>
+                    <div id='tag'></div>
+                </div>
+
+               <div  id="outclick"><img src="../../images/click.png" alt=""/><button className="in" id="click" onClick={this.setTip.bind(this)}>signin</button></div>
+                <div id="aa">
+                    <a href="z" id="up">signUp</a>
+                    <a href="z" id="forget">forgotPassword</a>
+                </div>
+
             </div>
+
+        </div>
     }
 }
 
