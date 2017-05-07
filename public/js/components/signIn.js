@@ -1,5 +1,6 @@
-import "!style-loader!css-loader!./../../style/signIn.css";
+import "!style-loader!css-loader!./../../style/signIn.css"
 import React from "react";
+
 import {Link} from 'react-router'
 
 class SignIn extends React.Component {
@@ -19,7 +20,7 @@ class SignIn extends React.Component {
 
     render() {
 
-        return <div id="sign">
+        return <div id ='signIn'>
             <h1>TWBS</h1>
             <div id='op'></div>
             <div className="input">

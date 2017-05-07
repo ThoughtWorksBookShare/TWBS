@@ -18,8 +18,6 @@ module.exports = {
                     presets: ['react', 'es2015']
                 }
             },
-            // {test: /\.png$/, loader: "file-loader"},
-            // {test: /\.jpg$/, loader: "file-loader"},
             {
                 test: /\.(png|jpg|jpeg)$/,
                 loader: 'url-loader?limit=8192&name=images/[name].[ext]'
