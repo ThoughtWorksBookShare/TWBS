@@ -3,13 +3,16 @@ import {render} from "react-dom";
 import {createStore, applyMiddleware} from "redux";
 import {Router, Route, IndexRoute, hashHistory} from "react-router";
 import {Provider} from "react-redux";
-import reducer from "./reducers/index";
+
 import App from "./containers/App";
 import SignIn from "./containers/signIn";
-import signIn from "./middlewares/signIn";
 import SignUp from './containers/signUp';
 
-const middleware = applyMiddleware(signIn);
+import reducer from "./reducers/index";
+import signIn from "./middlewares/signIn";
+import signUp from "./middlewares/signUp";
+
+const middleware = applyMiddleware(signIn,signUp);
 const store = createStore(reducer, middleware);
 
 render(<Provider store={store}>

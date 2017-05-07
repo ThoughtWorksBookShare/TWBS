@@ -1,8 +1,17 @@
-import SignUp from '../components/signUp';
-import {connect} from 'react-redux';
+import SignUp from "../components/signUp";
+import {connect} from "react-redux";
 
-const mapStateToProps = ()=> {
-    return {}
+const mapStateToProps = (state)=> {
+    return {
+        signUp:state.signUp.result
+    }
 }
 
- export  default connect(mapStateToProps)(SignUp);
+const mapDispatchToProps = (dispatch)=> {
+    return {
+        handleData: (name, password)=> {
+            dispatch({type: "SIGNUP", name, password})
+        }
+    }
+}
+export  default connect(mapStateToProps, mapDispatchToProps)(SignUp);

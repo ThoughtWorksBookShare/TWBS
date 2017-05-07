@@ -1,0 +1,22 @@
+#signUp {
+    width: 100%;
+    height: 100%;
+    /*background-image: url("../images/t.jpg");*/
+    /*background-size: cover;*/
+}
+
+#signUp-in {
+    position: absolute;
+    width: 400px;
+    height: 500px;
+    left: 50%;
+    top: 50%;
+    margin-left: -200px;
+    margin-top: -250px;
+    border: #ffc0ff solid 1px;
+}
+
+.up-input{
+    margin-left: 20%;
+    margin-top: 20%;
+}
