@@ -1,7 +1,6 @@
-import "!style-loader!css-loader!./../../style/signIn.css"
+import "!style-loader!css-loader!./../../style/signIn.css";
 import React from "react";
-
-import {Link} from 'react-router'
+import {Link} from "react-router";
 
 class SignIn extends React.Component {
     sign() {
@@ -11,31 +10,31 @@ class SignIn extends React.Component {
     }
 
     setTip() {
-        let tagStr = "登录成功";
         if (this.props.exist === false) {
-            tagStr = "用户名或密码错误";
+            document.getElementById('tag').innerHTML = "用户名或密码错误";
         }
-        document.getElementById('tag').innerHTML = tagStr;
+        else if (this.props.exist === true) {
+            document.getElementById('tag').innerHTML = "登录成功";
+        }
     }
 
     render() {
 
-        return <div id ='signIn'>
+        return <div id='signIn'>
             <h1>TWBS</h1>
             <div id='op'></div>
             <div className="input">
                 <div className="in"><img src="../../images/person.png" alt=""/><input type="text" id="in1" ref="name"
-                                                                                      onBlur={this.sign.bind(this)}
                                                                                       placeholder="name"/></div>
                 <div className="in"><img src="../../images/password.png" alt=""/><input type="password" id="in2"
                                                                                         ref="pass"
-                                                                                        onBlur={this.sign.bind(this)}
                                                                                         placeholder="password"/>
                     <div id='tag'></div>
                 </div>
 
                 <div id="outclick"><img src="../../images/click.png" alt=""/>
-                    <button className="in" id="click" onClick={this.setTip.bind(this)}>signin</button>
+                    <button className="in" id="click" onClick={this.sign.bind(this)}>signin</button>
+                    {this.setTip()}
                 </div>
                 <div id="aa">
                     <Link to="/signUp" id="up">signUp</Link>
