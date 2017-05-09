@@ -29,16 +29,15 @@ export  default class SignUp extends Component {
     }
 
     vertifyPassword1() {
+
         var password = this.refs.inputPass.value;
         var password1 = this.refs.inputPass1.value;
         if (password != password1) {
             document.getElementById("tag3").innerHTML = "和第一次所输密码不符,请重新输入";
             document.getElementById("input3").focus();
-
         }
         else {
             document.getElementById("tag3").innerHTML = "";
-            this.signUp();
         }
 
     }
@@ -46,15 +45,25 @@ export  default class SignUp extends Component {
     signUp() {
         var name = this.refs.inputName.value;
         var password = this.refs.inputPass.value;
-        this.props.handleData(name, password);
+        var password1 = this.refs.inputPass1.value;
+
+        if (name && password && password1 && (password === password1)) {
+            this.props.handleData(name, password);
+        }
+        else {
+            document.getElementById("tag3").innerHTML = "用户名和密码输入有误,请重新输入";
+            setTimeout(()=> {
+                document.getElementById("tag3").innerHTML = "";
+            }, 4000)
+        }
     }
 
     turnPage() {
-        if (this.props.signUp) {
+        if (this.props.signUp === true) {
             window.location.href = '/'
         }
-        else {
-            document.getElementById("tag3").innerHTML = "注册失败,该用户已存在,请重新输入";
+        else if (this.props.signUp === false) {
+            document.getElementById('tag3').innerHTML = '该账号已存在请重新注册'
         }
     }
 
@@ -74,7 +83,8 @@ export  default class SignUp extends Component {
                                                  onBlur={this.vertifyPassword1.bind(this)}/>
                     <div id="tag3"></div>
                 </div>
-                <button className="up-input" onClick={this.turnPage.bind(this)}>signUp</button>
+                <button className="up-input" onClick={this.signUp.bind(this)}>signUp</button>
+                {this.turnPage()}
             </div>
         </div>
     }
