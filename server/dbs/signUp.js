@@ -8,6 +8,7 @@ function AddInfo(req, callback) {
 
             if (res.length > 0) {
                 flag = false;
+                callback(flag);
             }
             else {
                 collection.insert({name: req.body.name, password: req.body.password}, (err, res)=> {
