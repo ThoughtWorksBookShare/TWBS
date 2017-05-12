@@ -8,13 +8,15 @@ import App from "./containers/App";
 import SignIn from "./containers/signIn";
 import SignUp from './containers/signUp';
 import AddBook from './containers/addBook';
+import ShowBooks from './containers/ShowBooks';
 
 import reducer from "./reducers/index";
+
 import signIn from "./middlewares/signIn";
 import signUp from "./middlewares/signUp";
 import addBook from "./middlewares/addBook";
 
-const middleware = applyMiddleware(signIn,signUp,addBook);
+const middleware = applyMiddleware(signIn, signUp, addBook);
 const store = createStore(reducer, middleware);
 
 render(<Provider store={store}>
@@ -22,6 +24,7 @@ render(<Provider store={store}>
         <Route path="/" component={App}>
             <IndexRoute component={SignIn}/>
             <Route path='signUp' component={SignUp}></Route>
+            <Route path='books' component={ShowBooks}></Route>
             <Route path='books/addBook' component={AddBook}></Route>
         </Route>
     </Router>
