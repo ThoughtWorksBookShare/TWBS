@@ -5,11 +5,7 @@ export default store=>next=>action=>{
         request.post('/signUp')
             .send({name:action.name,password:action.password})
             .end((err,res)=>{
-                if (res.ok) {
-                    alert('OK');
-                } else {
-                    alert('Oh no! error ');
-                }
+                next({type:action.type,result:res.body});
             })
     }
     else{
