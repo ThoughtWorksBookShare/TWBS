@@ -14,7 +14,7 @@ class SignIn extends React.Component {
             document.getElementById('tag').innerHTML = "用户名或密码错误";
         }
         else if (this.props.exist === true) {
-            document.getElementById('tag').innerHTML = "登录成功";
+            window.location.href = '#books'
         }
     }
 
