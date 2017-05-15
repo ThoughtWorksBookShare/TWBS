@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import "!style-loader!css-loader!./../../style/showBooks.css";
 
 export default class Books extends Component {
 
@@ -18,11 +19,11 @@ export default class Books extends Component {
 class BookList extends Component {
     render() {
         const bookList = this.props.bookList.map((val, index) => {
-            return <div key={index}>
-                <div>
+            return <div key={index} className="bookList">
+                <div className="bookName">
                     {val.bookName}
                 </div>
-                <div>
+                <div className="bookPicture">
                     <img src={val.bookPicture}/>
                 </div>
             </div>
