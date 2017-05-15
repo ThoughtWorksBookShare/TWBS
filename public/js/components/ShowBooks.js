@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import "!style-loader!css-loader!./../../style/showBooks.css";
+import Header from "./Header";
 
 export default class Books extends Component {
 
@@ -10,6 +11,7 @@ export default class Books extends Component {
     render() {
         return (
             <div>
+                <Header/>
                 <BookList bookList={this.props.bookList}/>
             </div>
         )
