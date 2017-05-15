@@ -22,16 +22,16 @@ class BookList extends Component {
     render() {
         const bookList = this.props.bookList.map((val, index) => {
             return <div key={index} className="bookList">
-                <div className="bookName">
-                    {val.bookName}
-                </div>
                 <div className="bookPicture">
                     <img src={val.bookPicture}/>
+                </div>
+                <div className="bookName">
+                    {val.bookName}
                 </div>
             </div>
         });
 
-        return (<div>
+        return (<div id="books">
             {bookList}
         </div>)
     }
