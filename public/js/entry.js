@@ -3,20 +3,18 @@ import {render} from "react-dom";
 import {createStore, applyMiddleware} from "redux";
 import {Router, Route, IndexRoute, hashHistory} from "react-router";
 import {Provider} from "react-redux";
-
 import App from "./containers/App";
 import SignIn from "./containers/signIn";
-import SignUp from './containers/signUp';
-import AddBook from './containers/addBook';
-import ShowBooks from './containers/ShowBooks';
-
+import SignUp from "./containers/signUp";
+import AddBook from "./containers/addBook";
+import ShowBooks from "./containers/ShowBooks";
 import reducer from "./reducers/index";
-
 import signIn from "./middlewares/signIn";
 import signUp from "./middlewares/signUp";
 import addBook from "./middlewares/addBook";
+import showBooks from "./middlewares/showBooks";
 
-const middleware = applyMiddleware(signIn, signUp, addBook);
+const middleware = applyMiddleware(signIn, signUp, addBook, showBooks);
 const store = createStore(reducer, middleware);
 
 render(<Provider store={store}>

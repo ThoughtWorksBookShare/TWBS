@@ -1,8 +1,15 @@
-import {connect} from 'react-redux';
-import ShowBooks from '../components/ShowBooks';
+import {connect} from "react-redux";
+import ShowBooks from "../components/ShowBooks";
 
 const mapStateToProps = (state) => {
     return {bookList: state.showBooks.bookList};
 };
 
-export default connect(mapStateToProps)(ShowBooks);
+const mapDispatchToProps = (dispatch)=> {
+    return {
+        showBooks: ()=> {
+            dispatch({type: "SHOWBOOKS"});
+        }
+    }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(ShowBooks);

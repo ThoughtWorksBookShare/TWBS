@@ -1,6 +1,11 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 
 export default class Books extends Component {
+
+    componentWillMount() {
+        this.props.showBooks();
+    }
+
     render() {
         return (
             <div>
