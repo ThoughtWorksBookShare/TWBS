@@ -8,7 +8,7 @@ function verifyInfo(req, callback) {
             if (result.length > 0 && result[0].password == req.body.inputPass) {
                 flag = true;
             }
-            callback(flag)
+            callback(flag);
         })
 
     })

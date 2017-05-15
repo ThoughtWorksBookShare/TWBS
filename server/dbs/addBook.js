@@ -22,7 +22,7 @@ function addBook(req, callback) {
                     if (err) console.log('创建失败！');
                     else console.log('创建成功！');
                 });
-            }else {
+            } else {
                 console.log("public/images/bookPic已存在");
 
             }

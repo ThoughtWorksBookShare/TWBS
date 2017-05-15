@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 
 const mapStateToProps = (state)=> {
     return {
-        signUp:state.signUp.result
+        signUp: state.signUp.result
     }
 }
 

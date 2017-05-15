@@ -60,10 +60,10 @@ export  default class SignUp extends Component {
 
     turnPage() {
         if (this.props.signUp === true) {
-            window.location.href = '/'
+            window.location.href = '/';
         }
         else if (this.props.signUp === false) {
-            document.getElementById('tag3').innerHTML = '该账号已存在请重新注册'
+            document.getElementById('tag3').innerHTML = '该账号已存在请重新注册';
         }
     }
 

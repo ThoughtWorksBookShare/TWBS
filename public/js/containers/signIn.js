@@ -3,7 +3,7 @@ import Signin from "../components/signIn";
 
 const mapStateToProps = (state)=> {
     return {
-        exist: state.signIn.exist,
+        exist: state.signIn.exist
     }
 }
 

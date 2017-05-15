@@ -4,4 +4,4 @@ import signUp from "./signUp";
 import addBook from "./addBook";
 import showBooks from "./showBooks";
 
-export default combineReducers({signIn,signUp,addBook,showBooks});
+export default combineReducers({signIn, signUp, addBook, showBooks});

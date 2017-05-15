@@ -4,7 +4,7 @@ const verifyInfo = require('../dbs/signIn');
 
 router.post('/verifyInfo', (req, res)=> {
     verifyInfo(req, (result)=> {
-        res.send(result)
+        res.send(result);
     })
 })
 

@@ -4,7 +4,7 @@ const AddInfo = require('../dbs/signUp');
 
 router.post('/signUp', (req, res)=> {
     AddInfo(req, (result)=> {
-        res.send(result)
+        res.send(result);
     })
 })
 
