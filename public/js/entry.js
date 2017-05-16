@@ -5,8 +5,8 @@ import {Router, Route, IndexRoute, hashHistory} from "react-router";
 import {Provider} from "react-redux";
 
 import App from "./containers/App";
-import SignIn from "./containers/signIn";
-import SignUp from "./containers/signUp";
+import SignIn from "./containers/SignIn";
+import SignUp from "./containers/SignUp";
 import AddBook from "./containers/addBook";
 import ShowBooks from "./containers/ShowBooks";
 import Book from './containers/Book';
