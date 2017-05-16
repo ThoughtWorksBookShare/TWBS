@@ -9,6 +9,7 @@ import SignIn from "./containers/signIn";
 import SignUp from "./containers/signUp";
 import AddBook from "./containers/addBook";
 import ShowBooks from "./containers/ShowBooks";
+import Book from './containers/Book';
 
 import reducer from "./reducers/index";
 
@@ -16,8 +17,6 @@ import signIn from "./middlewares/signIn";
 import signUp from "./middlewares/signUp";
 import addBook from "./middlewares/addBook";
 import showBooks from "./middlewares/showBooks";
-
-import Book from './components/Book';
 
 const middleware = applyMiddleware(signIn, signUp, addBook, showBooks);
 const store = createStore(reducer, middleware);

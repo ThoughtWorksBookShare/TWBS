@@ -6,24 +6,24 @@ export default class Book extends Component {
             <div>
                 <div className="bookInfo">
                     <div className="bookPicture">
-                        <img src="../../images/book1.jpg"/>
+                        <img src={this.props.book.bookPicture}/>
                     </div>
                     <div className="bookName">
-                        <h3>自控力</h3>
+                        <h3>{this.props.book.bookName}</h3>
                     </div>
                 </div>
                 <div className="bookInfo">
                     <div className="author">
-                        <span>作者：</span>
+                        <span>作者：{this.props.book.author}</span>
                     </div>
                     <div className="introduction">
-                        <span>简介：</span>
+                        <span>简介：{this.props.book.introduction}</span>
                     </div>
                     <div className="bookOwner">
-                        <span>书主：</span>
+                        <span>书主：{this.props.book.bookOwner}</span>
                     </div>
                     <div className="status">
-                        <span>状态：</span>
+                        <span>状态：{this.props.book.status}</span>
                     </div>
                 </div>
                 <div className="comments">
