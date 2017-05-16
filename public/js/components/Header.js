@@ -13,6 +13,16 @@ export default class Header extends Component {
 
 class Head extends Component {
     render() {
+
+        let userName;
+        const cookies = document.cookie.split("; ");
+        cookies.find((val) => {
+            const user = val.split("=");
+            if (user[0] === "user") {
+                userName = user[1];
+            }
+        });
+
         return (
             <div id="head">
                 <div id="logo" className="head">
@@ -27,7 +37,7 @@ class Head extends Component {
                         <img src="../../images/user.jpg"/>
                     </div>
                     <div className="headUser">
-                        <h5>白颖</h5>
+                        <h5>{userName}</h5>
                     </div>
                 </div>
             </div>
@@ -35,8 +45,8 @@ class Head extends Component {
     }
 }
 
-class Nav extends Component{
-    render(){
+class Nav extends Component {
+    render() {
         return (
             <div id="nav" className="head">
                 <div className="nav">
