@@ -36,12 +36,15 @@ export default class Test extends Component {
     }
 
     submitImg() {
-        var imageDateUrl = this.props.imgdataUrl;
+        let imageDateUrl = this.props.imgdataUrl;
+        let bookName = this.bookName.value;
+        let bookAuthor = this.bookAuthor.value;
+        let bookIntroduction = this.bookIntroduction.value;
 
         if (!document.getElementById("imgFile").files) {
             alert("no")
         }else {
-            this.props.updateBookMessage(imageDateUrl);
+            this.props.updateBookMessage(imageDateUrl,bookName,bookAuthor,bookIntroduction);
         }
     }
     render() {
@@ -49,7 +52,11 @@ export default class Test extends Component {
             <div>
                 <input type="file" id="imgFile" name="file" onChange={this.getImg.bind(this)}/>
                 <div id="preview"></div>
+                <div><span>书名</span><input id="bookName" ref={(c) => this.bookName = c} /></div>
+                <div><span>作者</span><input id="bookAuthor" ref={(c) => this.bookAuthor = c} /></div>
+                <div><span>简介</span><input id="bookIntroduction" ref={(c) => this.bookIntroduction = c} /></div>
                 <button type="submit" id="submit" onClick={this.submitImg.bind(this)}>提交</button>
+                <button id="cancel">取消</button>
             </div>
         );
     }
