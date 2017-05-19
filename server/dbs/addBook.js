@@ -12,7 +12,7 @@ function addBook(req, callback) {
     const bookComments = [];
 
     if (imageDateUrl && typeof imageDateUrl === 'string') {
-        const bookPicture = addBookPic(path,imageDateUrl,bookName,bookAuthor);
+        const bookPicture = addBookPic(path, imageDateUrl, bookName, bookAuthor);
         cn.MongoClient.connect(cn.url, (err, db)=> {
             const collection = db.collection('books');
             collection.insertOne({
@@ -27,13 +27,14 @@ function addBook(req, callback) {
 
 }
 
-function addBookPic(path,imageDateUrl,bookName,bookAuthor) {
-    let regex = /^data:.+\/(.+);base64,(.*)$/;
-    let matches = imageDateUrl.match(regex);
-    let imgExt = matches[1];
-    let imgData = matches[2];
-    let imgName = bookName + bookAuthor;
-    let buffer = new Buffer(imgData, 'base64');
+function addBookPic(path, imageDateUrl, bookName, bookAuthor) {
+    const regex = /^data:.+\/(.+);base64,(.*)$/;
+    const matches = imageDateUrl.match(regex);
+    const imgExt = matches[1];
+    const imgData = matches[2];
+    const currentDate = getNowFormatDate();
+    const imgName = bookName + bookAuthor + currentDate;
+    const buffer = new Buffer(imgData, 'base64');
     const bookSrc = path + imgName + '.' + imgExt;
 
 
@@ -76,6 +77,14 @@ function addBookPic(path,imageDateUrl,bookName,bookAuthor) {
     });
 
     return bookSrc;
+}
+
+function getNowFormatDate() {
+    const date = new Date();
+    const dateArr = [date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()];
+    const currentDate = dateArr.map((e)=> e < 10 ? ("0" + e) : e).join('');
+
+    return currentDate;
 }
 
 module.exports = addBook;

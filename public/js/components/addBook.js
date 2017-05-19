@@ -41,20 +41,21 @@ export default class Test extends Component {
         let bookAuthor = this.bookAuthor.value;
         let bookIntroduction = this.bookIntroduction.value;
 
-        if (!document.getElementById("imgFile").files) {
-            alert("no")
-        }else {
-            this.props.updateBookMessage(imageDateUrl,bookName,bookAuthor,bookIntroduction);
+        if (document.getElementById("imgFile").value === "") {
+            alert("请选择一张图片！");
+        } else {
+            this.props.updateBookMessage(imageDateUrl, bookName, bookAuthor, bookIntroduction);
         }
     }
+
     render() {
         return (
             <div>
                 <input type="file" id="imgFile" name="file" onChange={this.getImg.bind(this)}/>
                 <div id="preview"></div>
-                <div><span>书名</span><input id="bookName" ref={(c) => this.bookName = c} /></div>
-                <div><span>作者</span><input id="bookAuthor" ref={(c) => this.bookAuthor = c} /></div>
-                <div><span>简介</span><input id="bookIntroduction" ref={(c) => this.bookIntroduction = c} /></div>
+                <div><span>书名</span><input id="bookName" ref={(c) => this.bookName = c}/></div>
+                <div><span>作者</span><input id="bookAuthor" ref={(c) => this.bookAuthor = c}/></div>
+                <div><span>简介</span><input id="bookIntroduction" ref={(c) => this.bookIntroduction = c}/></div>
                 <button type="submit" id="submit" onClick={this.submitImg.bind(this)}>提交</button>
                 <button id="cancel">取消</button>
             </div>
