@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Link} from 'react-router'
 import "!style-loader!css-loader!./../../style/showBooks.css";
 import Header from "./Header";
 
@@ -23,7 +24,7 @@ class BookList extends Component {
         const bookList = this.props.bookList.map((val, index) => {
             return <div key={index} className="bookList">
                 <div className="bookPicture">
-                    <img src={val.bookPicture}/>
+                    <Link to={`/books/book:${val._id}`}><img src={val.bookPicture}/></Link>
                 </div>
                 <div className="bookName">
                     {val.bookName}

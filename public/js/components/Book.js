@@ -1,6 +1,12 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 
 export default class Book extends Component {
+    componentWillMount(){
+        const url = (window.location.href);
+        const parms = url.split(":");
+        const parmId = parms[parms.length - 1];
+        this.props.getBookInfo(parmId);
+    }
     render() {
         return (
             <div>

@@ -4,6 +4,7 @@ const signIn = require('./server/routers/signIn');
 const signUp =  require('./server/routers/signUp');
 const addBook =  require('./server/routers/addBook');
 const showBooks = require('./server/routers/showBooks');
+const getBook = require('./server/routers/getBook');
 
 const bodyParser = require('body-parser');
 
@@ -16,6 +17,7 @@ app.use('/', signIn);
 app.use('/',signUp);
 app.use('/',addBook);
 app.use('/',showBooks);
+app.use('/',getBook);
 
 app.listen(3000, function () {
     console.log("listen 3000!!");
