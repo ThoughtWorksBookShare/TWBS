@@ -40,9 +40,9 @@ export default class Test extends Component {
         let bookName = this.bookName.value;
         let bookAuthor = this.bookAuthor.value;
         let bookIntroduction = this.bookIntroduction.value;
-
-        if (document.getElementById("imgFile").value === "") {
-            alert("请选择一张图片！");
+        if (document.getElementById("imgFile").value === "" || document.getElementById("bookName").value === ""
+            || document.getElementById("bookAuthor").value === "" || document.getElementById("bookIntroduction").value === "") {
+            alert("信息不完整，请补充");
         } else {
             this.props.updateBookMessage(imageDateUrl, bookName, bookAuthor, bookIntroduction);
         }
@@ -55,7 +55,10 @@ export default class Test extends Component {
                 <div id="preview"></div>
                 <div><span>书名</span><input id="bookName" ref={(c) => this.bookName = c}/></div>
                 <div><span>作者</span><input id="bookAuthor" ref={(c) => this.bookAuthor = c}/></div>
-                <div><span>简介</span><input id="bookIntroduction" ref={(c) => this.bookIntroduction = c}/></div>
+                <div>
+                    <div>简介</div>
+                    <textarea rows="5" cols="23" id="bookIntroduction" ref={(c) => this.bookIntroduction = c}/>
+                </div>
                 <button type="submit" id="submit" onClick={this.submitImg.bind(this)}>提交</button>
                 <button id="cancel">取消</button>
             </div>
