@@ -13,6 +13,7 @@ export default class Books extends Component {
         return (
             <div>
                 <Header/>
+                <Link to="/books/addBook"><button className="upLoadBook">我要上传</button></Link>
                 <BookList bookList={this.props.bookList}/>
             </div>
         )
