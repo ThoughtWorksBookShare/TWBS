@@ -36,20 +36,31 @@ export default class Test extends Component {
     }
 
     submitImg() {
-        var imageDateUrl = this.props.imgdataUrl;
-
-        if (!document.getElementById("imgFile").files) {
-            alert("no")
-        }else {
-            this.props.updateBookMessage(imageDateUrl);
+        let imageDateUrl = this.props.imgdataUrl;
+        let bookName = this.bookName.value;
+        let bookAuthor = this.bookAuthor.value;
+        let bookIntroduction = this.bookIntroduction.value;
+        if (document.getElementById("imgFile").value === "" || document.getElementById("bookName").value === ""
+            || document.getElementById("bookAuthor").value === "" || document.getElementById("bookIntroduction").value === "") {
+            alert("信息不完整，请补充");
+        } else {
+            this.props.updateBookMessage(imageDateUrl, bookName, bookAuthor, bookIntroduction);
         }
     }
+
     render() {
         return (
             <div>
                 <input type="file" id="imgFile" name="file" onChange={this.getImg.bind(this)}/>
                 <div id="preview"></div>
+                <div><span>书名</span><input id="bookName" ref={(c) => this.bookName = c}/></div>
+                <div><span>作者</span><input id="bookAuthor" ref={(c) => this.bookAuthor = c}/></div>
+                <div>
+                    <div>简介</div>
+                    <textarea rows="5" cols="23" id="bookIntroduction" ref={(c) => this.bookIntroduction = c}/>
+                </div>
                 <button type="submit" id="submit" onClick={this.submitImg.bind(this)}>提交</button>
+                <button id="cancel">取消</button>
             </div>
         );
     }

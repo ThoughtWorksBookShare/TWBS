@@ -12,8 +12,8 @@ const mapDispatchToprops = (dispatch)=> {
         getImgData: (imgdataUrl)=> {
             dispatch({type: 'addBook', imgdataUrl})
         },
-        updateBookMessage:(imageDateUrl)=>{
-            dispatch({type:'updateBookMessage',imageDateUrl})
+        updateBookMessage:(imageDateUrl,bookName,bookAuthor,bookIntroduction)=>{
+            dispatch({type:'updateBookMessage',imageDateUrl,bookName,bookAuthor,bookIntroduction})
         }
     }
 };
