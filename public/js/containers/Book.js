@@ -7,11 +7,11 @@ const mapStateToProps = (state) => {
     }
 };
 
-const mapDispatchToProps = (dispatch) =>{
+const mapDispatchToProps = (dispatch) => {
     return {
-        getBookInfo:(bookId)=>{
-            dispatch({type:"GETBOOK",bookId})
+        getBookInfo: (bookId) => {
+            dispatch({type: "GETBOOK", bookId})
         }
     }
-}
-export default connect(mapStateToProps,mapDispatchToProps)(Book);
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Book);
