@@ -2,6 +2,7 @@ var fs = require('fs');
 const cn = require('./connect');
 
 function addBook(req, callback) {
+    let flag = 'fail';
     const path = './public/images/bookPic/';
     const imageDateUrl = req.body.imageDateUrl;
     const bookName = req.body.bookName;
@@ -12,31 +13,40 @@ function addBook(req, callback) {
     const bookComments = [];
 
     if (imageDateUrl && typeof imageDateUrl === 'string') {
-        const bookPicture = addBookPic(path,imageDateUrl,bookName,bookAuthor);
+        const bookPicture = addBookPic(path, imageDateUrl, bookName, bookAuthor);
         cn.MongoClient.connect(cn.url, (err, db)=> {
             const collection = db.collection('books');
             collection.insertOne({
                 bookPicture, bookName, bookAuthor,
                 bookIntroduction, bookOwner, bookStatus, bookComments
+            },(err,insertResult)=>{
+                if(insertResult.result.ok === 1){
+                    flag = 'success';
+                }
+                 console.log(flag);
+                callback(flag);
             });
+
+
         })
 
     } else {
         console.log('没有图片数据');
+        callback(flag);
     }
 
 }
 
-function addBookPic(path,imageDateUrl,bookName,bookAuthor) {
-    let regex = /^data:.+\/(.+);base64,(.*)$/;
-    let matches = imageDateUrl.match(regex);
-    let imgExt = matches[1];
-    let imgData = matches[2];
-    let imgName = bookName + bookAuthor;
-    let buffer = new Buffer(imgData, 'base64');
+function addBookPic(path, imageDateUrl, bookName, bookAuthor) {
+    const regex = /^data:.+\/(.+);base64,(.*)$/;
+    const matches = imageDateUrl.match(regex);
+    const imgExt = matches[1];
+    const imgData = matches[2];
+    const currentDate = getNowFormatDate();
+    const imgName = bookName + bookAuthor + currentDate;
+    const buffer = new Buffer(imgData, 'base64');
     let bookImg = imgName + '.' + imgExt;
     const bookSrc = path + bookImg;
-
 
     fs.stat(path, function (err, stat) {
         if (!(stat && stat.isDirectory())) {
@@ -77,6 +87,14 @@ function addBookPic(path,imageDateUrl,bookName,bookAuthor) {
     });
 
     return '../../images/bookPic/'+bookImg;
+}
+
+function getNowFormatDate() {
+    const date = new Date();
+    const dateArr = [date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()];
+    const currentDate = dateArr.map((e)=> e < 10 ? ("0" + e) : e).join('');
+
+    return currentDate;
 }
 
 module.exports = addBook;

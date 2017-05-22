@@ -8,7 +8,7 @@ export default store=>next=>action=> {
                 bookAuthor:action.bookAuthor,
                 bookIntroduction:action.bookIntroduction})
             .end((err,res)=>{
-                next({type:action.type})
+                next({type:action.type,result:res.text})
             })
     }
     else{

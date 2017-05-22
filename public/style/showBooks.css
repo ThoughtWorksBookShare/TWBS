@@ -1,4 +1,4 @@
-.bookPicture > img {
+.bookPicture img {
     height: 120px;
     width: 100px;
     overflow: hidden;
@@ -21,6 +21,8 @@
     height: auto;
     width: 80%;
     margin-left: 10%;
-    border: solid sienna 0px;
+}
 
+.upLoadBook{
+    margin-left: 95%;
 }

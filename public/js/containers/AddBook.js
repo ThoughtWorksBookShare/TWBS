@@ -1,9 +1,10 @@
 import {connect} from "react-redux";
-import AddBook from "../components/addBook";
+import AddBook from "../components/AddBook";
 
 const mapStateToProps = (state)=> {
     return {
-        imgdataUrl: state.addBook.imgdataUrl
+        imgdataUrl: state.addBook.imgdataUrl,
+        result:state.addBook.result
     }
 };
 

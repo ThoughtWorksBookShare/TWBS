@@ -11,7 +11,7 @@ class SignIn extends React.Component {
 
     setTip() {
         if (this.props.exist === false) {
-            document.getElementById('tag').innerHTML = "用户名或密码错误";
+            this.refs.tag.innerHTML = "用户名或密码错误";
         }
         else if (this.props.exist === true) {
             document.cookie = "user=" + this.refs.name.value;
@@ -30,7 +30,7 @@ class SignIn extends React.Component {
                 <div className="in"><img src="../../images/password.png" alt=""/><input type="password" id="in2"
                                                                                         ref="pass"
                                                                                         placeholder="password"/>
-                    <div id='tag'></div>
+                    <div id='tag' ref='tag'></div>
                 </div>
 
                 <div id="outclick"><img src="../../images/click.png" alt=""/>
