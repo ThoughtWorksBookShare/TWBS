@@ -43,7 +43,7 @@ export default class Test extends Component {
         let bookIntroduction = this.bookIntroduction.value;
         if (document.getElementById("imgFile").value === "" || document.getElementById("bookName").value === ""
             || document.getElementById("bookAuthor").value === "" || document.getElementById("bookIntroduction").value === "") {
-            alert("信息不完整，请补充");
+            this.refs.tip.innerHTML = "信息不完整，请补充！"
         } else {
             this.props.updateBookMessage(imageDateUrl, bookName, bookAuthor, bookIntroduction);
         }
