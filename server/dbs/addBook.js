@@ -34,7 +34,8 @@ function addBookPic(path,imageDateUrl,bookName,bookAuthor) {
     let imgData = matches[2];
     let imgName = bookName + bookAuthor;
     let buffer = new Buffer(imgData, 'base64');
-    const bookSrc = path + imgName + '.' + imgExt;
+    let bookImg = imgName + '.' + imgExt;
+    const bookSrc = path + bookImg;
 
 
     fs.stat(path, function (err, stat) {
@@ -51,7 +52,7 @@ function addBookPic(path,imageDateUrl,bookName,bookAuthor) {
 
         if (fs.exists(path)) {
 
-            fs.unlink(path + imgName + '.' + imgExt, function (err) {
+            fs.unlink(bookSrc, function (err) {
                 if (err) {
                     return console.error(err);
                 }
@@ -64,7 +65,7 @@ function addBookPic(path,imageDateUrl,bookName,bookAuthor) {
                 console.error(err);
                 return;
             } else {
-                fs.writeFile(path + imgName + '.' + imgExt, buffer);
+                fs.writeFile(bookSrc, buffer);
                 fs.close(fd, function (err) {
                     if (err) {
                         console.log(err);
@@ -75,7 +76,7 @@ function addBookPic(path,imageDateUrl,bookName,bookAuthor) {
         });
     });
 
-    return bookSrc;
+    return '../../images/bookPic/'+bookImg;
 }
 
 module.exports = addBook;
