@@ -15,8 +15,9 @@ import signUp from "./middlewares/signUp";
 import addBook from "./middlewares/addBook";
 import showBooks from "./middlewares/showBooks";
 import getBook from "./middlewares/getBook";
+import addBookComment from "./middlewares/addBookComment";
 
-const middleware = applyMiddleware(signIn, signUp, addBook, showBooks, getBook);
+const middleware = applyMiddleware(signIn, signUp, addBook, showBooks, getBook, addBookComment);
 const store = createStore(reducer, middleware);
 
 render(<Provider store={store}>
@@ -27,6 +28,7 @@ render(<Provider store={store}>
             <Route path='books' component={ShowBooks}></Route>
             <Route path='books/addBook' component={AddBook}></Route>
             <Route path='books/book:bookId' component={Book}></Route>
+            <Route path='books/book/addBookComment' component={Book}></Route>
         </Route>
     </Router>
 </Provider>, document.getElementById("app"));

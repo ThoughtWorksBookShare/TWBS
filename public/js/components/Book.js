@@ -8,6 +8,32 @@ export default class Book extends Component {
         this.props.getBookInfo(parmId);
     }
 
+    addComment(id) {
+        let commentText = document.getElementById("commentText");
+        let comment = "";
+        if (commentText !== null) {
+            comment = commentText.value;
+        }
+        else {
+            comment = null;
+        }
+        const needComment = {id: id, comment: comment};
+        this.props.addComment(needComment);
+    }
+
+    //
+    // isOwnEmpty(obj)
+    // {
+    //     for(let name in obj)
+    //     {
+    //         if(obj.hasOwnProperty(name))
+    //         {
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // };
+
     render() {
         const book = this.props.book;
         let status = "";
@@ -18,6 +44,12 @@ export default class Book extends Component {
         else {
             status = "已借出";
         }
+
+        const comments = book.bookComments.map((val, index) => {
+            return <div key={index}>
+                {val}
+            </div>
+        });
 
         return (
             <div>
@@ -45,8 +77,8 @@ export default class Book extends Component {
                 </div>
                 <div className="comments">
                     <div className="writeComment">
-                        <input type="text"/>
-                        <button>评论</button>
+                        <input type="text" id="commentText"/>
+                        <button onClick={this.addComment.bind(this, book._id)}>评论</button>
                     </div>
                     <div className="commentsList">
                         <div className="comment">
@@ -54,6 +86,9 @@ export default class Book extends Component {
                                 <img src="../../images/user.jpg"/>
                             </div>
                             <p>评论信息</p>
+                            <div>
+                                {comments}
+                            </div>
                         </div>
                     </div>
                 </div>
