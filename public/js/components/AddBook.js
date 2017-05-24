@@ -10,11 +10,8 @@ export default class Test extends Component {
 
         if (files) {
 
-            [].forEach.call(files, readAndPreview);
+            [].forEach.call(files, readAndPreview.bind(this));
 
-            setTimeout(function () {
-                this.props.getImgData(imgdataUrl);
-            }.bind(this), 1000);
         }
 
         function readAndPreview(file) {
@@ -22,16 +19,17 @@ export default class Test extends Component {
             // Make sure `file.name` matches our extensions criteria
             if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
                 var reader = new FileReader();
+                reader.readAsDataURL(file);
 
-                reader.addEventListener("load", function () {
+                reader.addEventListener("load", ()=> {
                     var image = new Image();
                     image.height = 100;
                     image.title = file.name;
-                    image.src = this.result;
-                    imgdataUrl = this.result;
+                    image.src = reader.result;
+                    imgdataUrl = reader.result;
                     preview.appendChild(image);
+                    this.props.getImgData(imgdataUrl);
                 }, false);
-                reader.readAsDataURL(file);
             }
 
         }
@@ -52,12 +50,12 @@ export default class Test extends Component {
                 bookOwner = cookieValue;
             }
         });
-        
+
         if (document.getElementById("imgFile").value === "" || document.getElementById("bookName").value === ""
             || document.getElementById("bookAuthor").value === "" || document.getElementById("bookIntroduction").value === "") {
             this.refs.tip.innerHTML = "信息不完整，请补充！"
         } else {
-            this.props.updateBookMessage(imageDateUrl, bookName, bookAuthor, bookIntroduction,bookOwner);
+            this.props.updateBookMessage(imageDateUrl, bookName, bookAuthor, bookIntroduction, bookOwner);
         }
     }
 
