@@ -5,30 +5,27 @@ import Header from "./Header";
 
 export default class Test extends Component {
     getImg() {
-        let preview = document.getElementById('preview');
-        let files = document.getElementById("imgFile").files;
-        let imgdataUrl = '';
+        let files = this.imgFile.files;
 
         if (files) {
-
             [].forEach.call(files, readAndPreview.bind(this));
-
         }
 
         function readAndPreview(file) {
 
             // Make sure `file.name` matches our extensions criteria
             if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
-                var reader = new FileReader();
+                let reader = new FileReader();
                 reader.readAsDataURL(file);
 
                 reader.addEventListener("load", ()=> {
-                    var image = new Image();
+                    let image = new Image();
                     image.height = 100;
                     image.title = file.name;
                     image.src = reader.result;
-                    imgdataUrl = reader.result;
-                    preview.appendChild(image);
+                    this.preview.appendChild(image);
+
+                    let imgdataUrl = reader.result;
                     this.props.getImgData(imgdataUrl);
                 }, false);
             }
@@ -82,8 +79,9 @@ export default class Test extends Component {
             <div>
                 <Header/>
                 <div className="addBook">
-                    <input type="file" id="imgFile" name="file" onChange={this.getImg.bind(this)}/>
-                    <div id="preview"></div>
+                    <input type="file" id="imgFile" name="file" ref={(c) => this.imgFile = c}
+                           onChange={this.getImg.bind(this)}/>
+                    <div id="preview" ref={(c) => this.preview = c}></div>
                     <div className="msgInput"><span>书名</span><input id="bookName" ref={(c) => this.bookName = c}/></div>
                     <div className="msgInput"><span>作者</span><input id="bookAuthor" ref={(c) => this.bookAuthor = c}/>
                     </div>
