@@ -3,8 +3,16 @@ import ShowComments from '../components/ShowComments';
 
 const mapStateToProps = (state) => {
     return {
-        comments: state.showComments.comments
+        comments: state.showComments
     }
 };
 
-export default connect(mapStateToProps)(ShowComments);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        showComments: () => {
+            dispatch({type: "SHOWCOMMENTS"});
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowComments);

@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 
 export default class Commments extends Component {
+    componentWillMount() {
+        this.props.showComments();
+    }
+
     render() {
         const comments = this.props.comments.map((val, index) => {
             return <div key={index} className="commentsInformation">
