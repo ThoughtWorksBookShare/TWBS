@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import Header from "./Header";
 
 export default class Book extends Component {
     componentWillMount() {
@@ -40,6 +41,7 @@ export default class Book extends Component {
 
         return (
             <div>
+                <Header/>
                 <div className="bookInfo">
                     <div className="bookPicture">
                         <img src={book.bookPicture}/>

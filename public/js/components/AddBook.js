@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Link} from "react-router";
+import Header from "./Header";
 
 
 export default class Test extends Component {
@@ -42,7 +43,7 @@ export default class Test extends Component {
         let bookIntroduction = this.bookIntroduction.value;
         let bookOwner;
         let allCookies = document.cookie.split("; ");
-        allCookies.forEach((val)=> {
+        allCookies.forEach((val) => {
             let cookie = val.split("=");
             let cookieName = cookie[0];
             let cookieValue = cookie[1];
@@ -78,23 +79,27 @@ export default class Test extends Component {
 
     render() {
         return (
-            <div className="addBook">
-                <input type="file" id="imgFile" name="file" onChange={this.getImg.bind(this)}/>
-                <div id="preview"></div>
-                <div className="msgInput"><span>书名</span><input id="bookName" ref={(c) => this.bookName = c}/></div>
-                <div className="msgInput"><span>作者</span><input id="bookAuthor" ref={(c) => this.bookAuthor = c}/></div>
-                <div className="msgInput">
-                    <div className="bookIntro">简介</div>
-                    <div><textarea rows="5" cols="23" id="bookIntroduction" ref={(c) => this.bookIntroduction = c}/>
+            <div>
+                <Header/>
+                <div className="addBook">
+                    <input type="file" id="imgFile" name="file" onChange={this.getImg.bind(this)}/>
+                    <div id="preview"></div>
+                    <div className="msgInput"><span>书名</span><input id="bookName" ref={(c) => this.bookName = c}/></div>
+                    <div className="msgInput"><span>作者</span><input id="bookAuthor" ref={(c) => this.bookAuthor = c}/>
                     </div>
-                </div>
+                    <div className="msgInput">
+                        <div className="bookIntro">简介</div>
+                        <div><textarea rows="5" cols="23" id="bookIntroduction" ref={(c) => this.bookIntroduction = c}/>
+                        </div>
+                    </div>
 
-                <div id="tip" ref='tip'></div>
-                <button type="submit" id="submit" onClick={this.submitBook.bind(this)}>提交</button>
-                {this.setTip()}
-                <Link to="/books">
-                    <button id="cancel">取消</button>
-                </Link>
+                    <div id="tip" ref='tip'></div>
+                    <button type="submit" id="submit" onClick={this.submitBook.bind(this)}>提交</button>
+                    {this.setTip()}
+                    <Link to="/books">
+                        <button id="cancel">取消</button>
+                    </Link>
+                </div>
             </div>
         );
     }
