@@ -3,12 +3,24 @@ const ObjectID = require('mongodb').ObjectID;
 
 function addBookComment(req, callback) {
     cn.MongoClient.connect(cn.url, (err, db) => {
-        const collection = db.collection("books");
+        const booksCollection = db.collection("books");
+        const commentsCollection = db.collection("comments");
         const whereStr = {"_id": ObjectID(req.body.needComment.id)};
-        collection.findOne(whereStr, (err, result) => {
+        const dateTime = new Date();
+        const time = dateTime.toLocaleString();
+        booksCollection.findOne(whereStr, (err, result) => {
             result.bookComments.push(req.body.needComment.comment);
-            collection.save(result);
+            booksCollection.save(result);
             callback(result);
+        });
+        commentsCollection.insertOne({
+            bookId: req.body.needComment.id,
+            comment: req.body.needComment.comment,
+            time: time
+        }, (err, result) => {
+            if (err) {
+                console.log("error");
+            }
         })
     })
 }

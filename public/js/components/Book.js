@@ -21,19 +21,6 @@ export default class Book extends Component {
         this.props.addComment(needComment);
     }
 
-    //
-    // isOwnEmpty(obj)
-    // {
-    //     for(let name in obj)
-    //     {
-    //         if(obj.hasOwnProperty(name))
-    //         {
-    //             return false;
-    //         }
-    //     }
-    //     return true;
-    // };
-
     render() {
         const book = this.props.book;
         let status = "";
