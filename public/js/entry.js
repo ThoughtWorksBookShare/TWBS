@@ -11,6 +11,8 @@ import AddBook from "./containers/AddBook";
 import ShowBooks from "./containers/ShowBooks";
 import Book from "./containers/Book";
 import ShowComments from "./containers/ShowComments";
+import WantedBooks from "./components/WantedBooks";
+import Personal from "./components/Personal";
 
 import reducer from "./reducers/index";
 
@@ -35,6 +37,8 @@ render(<Provider store={store}>
             <Route path='books/book:bookId' component={Book}></Route>
             <Route path='books/book/addBookComment' component={Book}></Route>
             <Route path='comments' component={ShowComments}></Route>
+            <Route path='wantedBooks' component={WantedBooks}></Route>
+            <Route path='personal' component={Personal}></Route>
         </Route>
     </Router>
 </Provider>, document.getElementById("app"));

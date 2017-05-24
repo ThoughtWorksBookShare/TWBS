@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import "!style-loader!css-loader!./../../style/header.css";
+import {Link}from 'react-router';
 
 export default class Header extends Component {
     render() {
@@ -49,18 +50,26 @@ class Nav extends Component {
     render() {
         return (
             <div id="nav" className="head">
-                <div className="nav">
-                    书库
-                </div>
-                <div className="nav">
-                    精评
-                </div>
-                <div className="nav">
-                    想看的书
-                </div>
-                <div className="nav">
-                    个人中心
-                </div>
+                <Link to="/books">
+                    <div className="nav">
+                        书库
+                    </div>
+                </Link>
+                <Link to="/comments">
+                    <div className="nav">
+                        精评
+                    </div>
+                </Link>
+                <Link to="/wantedBooks">
+                    <div className="nav">
+                        想看的书
+                    </div>
+                </Link>
+                <Link to="/personal">
+                    <div className="nav">
+                        个人中心
+                    </div>
+                </Link>
             </div>
         )
     }
