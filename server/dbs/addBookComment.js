@@ -13,8 +13,12 @@ function addBookComment(req, callback) {
             booksCollection.save(result);
             callback(result);
         });
-        commentsCollection.insertOne({bookId:req.body.needComment.id,comment:req.body.needComment.comment,time:time},(err,result)=>{
-            if(err){
+        commentsCollection.insertOne({
+            bookId: req.body.needComment.id,
+            comment: req.body.needComment.comment,
+            time: time
+        }, (err, result) => {
+            if (err) {
                 console.log("error");
             }
         })
