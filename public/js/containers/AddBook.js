@@ -11,10 +11,10 @@ const mapStateToProps = (state)=> {
 const mapDispatchToprops = (dispatch)=> {
     return {
         getImgData: (imgdataUrl)=> {
-            dispatch({type: 'addBook', imgdataUrl})
+            dispatch({type: 'ADDBOOK', imgdataUrl})
         },
-        updateBookMessage:(imageDateUrl,bookName,bookAuthor,bookIntroduction)=>{
-            dispatch({type:'updateBookMessage',imageDateUrl,bookName,bookAuthor,bookIntroduction})
+        updateBookMessage:(imageDateUrl,bookName,bookAuthor,bookIntroduction,bookOwner)=>{
+            dispatch({type:'UPDATEBOOKMESSAGE',imageDateUrl,bookName,bookAuthor,bookIntroduction,bookOwner})
         }
     }
 };
