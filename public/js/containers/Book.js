@@ -11,6 +11,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         getBookInfo: (bookId) => {
             dispatch({type: "GETBOOK", bookId})
+        },
+        addComment: (needComment) => {
+            dispatch({type: "ADDCOMMENT", needComment})
         }
     }
 };
