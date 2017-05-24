@@ -1,5 +1,7 @@
 import React, {Component} from "react";
+import "!style-loader!css-loader!./../../style/addBook.css";
 import {Link} from "react-router";
+
 
 export default class Test extends Component {
     getImg() {
@@ -41,22 +43,33 @@ export default class Test extends Component {
         let bookName = this.bookName.value;
         let bookAuthor = this.bookAuthor.value;
         let bookIntroduction = this.bookIntroduction.value;
+        let bookOwner;
+        let allCookies = document.cookie.split("; ");
+        allCookies.forEach((val)=> {
+            let cookie = val.split("=");
+            let cookieName = cookie[0];
+            let cookieValue = cookie[1];
+            if (cookieName === "user") {
+                bookOwner = cookieValue;
+            }
+        });
+        
         if (document.getElementById("imgFile").value === "" || document.getElementById("bookName").value === ""
             || document.getElementById("bookAuthor").value === "" || document.getElementById("bookIntroduction").value === "") {
             this.refs.tip.innerHTML = "信息不完整，请补充！"
         } else {
-            this.props.updateBookMessage(imageDateUrl, bookName, bookAuthor, bookIntroduction);
+            this.props.updateBookMessage(imageDateUrl, bookName, bookAuthor, bookIntroduction,bookOwner);
         }
     }
 
     setTip() {
         let result = this.props.result;
-        if(this.refs.tip){
+        if (this.refs.tip) {
             if (result === 'success') {
                 this.refs.tip.innerHTML = '您已提交成功';
                 setTimeout(function () {
                     window.location.href = '#/books';
-                },1000)
+                }, 1000)
             }
 
             if (result === 'fail') {
@@ -68,20 +81,23 @@ export default class Test extends Component {
 
     render() {
         return (
-            <div>
+            <div className="addBook">
                 <input type="file" id="imgFile" name="file" onChange={this.getImg.bind(this)}/>
                 <div id="preview"></div>
-                <div><span>书名</span><input id="bookName" ref={(c) => this.bookName = c}/></div>
-                <div><span>作者</span><input id="bookAuthor" ref={(c) => this.bookAuthor = c}/></div>
-                <div>
-                    <div>简介</div>
-                    <textarea rows="5" cols="23" id="bookIntroduction" ref={(c) => this.bookIntroduction = c}/>
+                <div className="msgInput"><span>书名</span><input id="bookName" ref={(c) => this.bookName = c}/></div>
+                <div className="msgInput"><span>作者</span><input id="bookAuthor" ref={(c) => this.bookAuthor = c}/></div>
+                <div className="msgInput">
+                    <div className="bookIntro">简介</div>
+                    <div><textarea rows="5" cols="23" id="bookIntroduction" ref={(c) => this.bookIntroduction = c}/>
+                    </div>
                 </div>
 
                 <div id="tip" ref='tip'></div>
                 <button type="submit" id="submit" onClick={this.submitBook.bind(this)}>提交</button>
                 {this.setTip()}
-                <Link to="/books"><button id="cancel">取消</button></Link>
+                <Link to="/books">
+                    <button id="cancel">取消</button>
+                </Link>
             </div>
         );
     }

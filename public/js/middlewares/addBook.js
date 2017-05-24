@@ -6,7 +6,9 @@ export default store=>next=>action=> {
             .send({imageDateUrl:action.imageDateUrl,
                 bookName:action.bookName,
                 bookAuthor:action.bookAuthor,
-                bookIntroduction:action.bookIntroduction})
+                bookIntroduction:action.bookIntroduction,
+                bookOwner:action.bookOwner
+            })
             .end((err,res)=>{
                 next({type:action.type,result:res.text})
             })

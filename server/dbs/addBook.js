@@ -8,7 +8,7 @@ function addBook(req, callback) {
     const bookName = req.body.bookName;
     const bookAuthor = req.body.bookAuthor;
     const bookIntroduction = req.body.bookIntroduction;
-    const bookOwner = '';
+    const bookOwner = req.body.bookOwner;
     const bookStatus = false;
     const bookComments = [];
 
@@ -51,7 +51,7 @@ function addBookPic(path, imageDateUrl, bookName, bookAuthor) {
     fs.stat(path, function (err, stat) {
         if (!(stat && stat.isDirectory())) {
             console.log('创建image文件夹');
-            fs.mkdir(path, function (err) {
+            fs.mkdirSync(path, function (err) {
                 if (err) console.log('创建失败！');
                 else console.log('创建成功！');
             });
