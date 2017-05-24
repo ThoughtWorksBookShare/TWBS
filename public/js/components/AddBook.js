@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import "!style-loader!css-loader!./../../style/addBook.css";
 import {Link} from "react-router";
 
 

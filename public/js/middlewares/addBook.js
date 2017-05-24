@@ -1,7 +1,7 @@
 import request from 'superagent';
 
 export default store=>next=>action=> {
-    if(action.type === "updateBookMessage"){
+    if(action.type === "UPDATEBOOKMESSAGE"){
         request.post("/addBook")
             .send({imageDateUrl:action.imageDateUrl,
                 bookName:action.bookName,

@@ -1,9 +1,9 @@
 export default (state = {imgdataUrl:'',result:''}, action)=> {
     switch (action.type) {
-        case 'addBook': {
+        case 'ADDBOOK': {
             return {imgdataUrl: action.imgdataUrl}
         }
-        case 'updateBookMessage': {
+        case 'UPDATEBOOKMESSAGE': {
             return {result:action.result}
         }
     }
