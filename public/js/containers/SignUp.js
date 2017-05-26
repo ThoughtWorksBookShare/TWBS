@@ -5,7 +5,7 @@ const mapStateToProps = (state)=> {
     return {
         signUp: state.signUp.result
     }
-}
+};
 
 const mapDispatchToProps = (dispatch)=> {
     return {
@@ -13,5 +13,5 @@ const mapDispatchToProps = (dispatch)=> {
             dispatch({type: "SIGNUP", name, password})
         }
     }
-}
+};
 export  default connect(mapStateToProps, mapDispatchToProps)(SignUp);

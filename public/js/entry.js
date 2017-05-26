@@ -12,6 +12,7 @@ import ShowBooks from "./containers/ShowBooks";
 import Book from "./containers/Book";
 import ShowComments from "./containers/ShowComments";
 import WantedBooks from "./components/WantedBooks";
+import AddDesiredBook from "./containers/AddDesiredBook"
 import Personal from "./components/Personal";
 
 import reducer from "./reducers/index";
@@ -23,8 +24,10 @@ import showBooks from "./middlewares/showBooks";
 import getBook from "./middlewares/getBook";
 import addBookComment from "./middlewares/addBookComment";
 import showComments from "./middlewares/showComments";
+import addDesiredBook from "./middlewares/addDesiredBook";
 
-const middleware = applyMiddleware(signIn, signUp, addBook, showBooks, getBook, addBookComment, showComments);
+const middleware = applyMiddleware(signIn, signUp, addBook, showBooks, getBook,
+    addBookComment, showComments, addDesiredBook);
 const store = createStore(reducer, middleware);
 
 render(<Provider store={store}>
@@ -38,6 +41,7 @@ render(<Provider store={store}>
             <Route path='books/book/addBookComment' component={Book}></Route>
             <Route path='comments' component={ShowComments}></Route>
             <Route path='wantedBooks' component={WantedBooks}></Route>
+            <Route path='wantedBooks/addDesiredBook' component={AddDesiredBook}></Route>
             <Route path='personal' component={Personal}></Route>
         </Route>
     </Router>
