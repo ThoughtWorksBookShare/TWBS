@@ -4,7 +4,8 @@ import {createStore, applyMiddleware} from "redux";
 import {Router, Route, IndexRoute, hashHistory} from "react-router";
 import {Provider} from "react-redux";
 
-import App from "./containers/App";
+import App from "./components/App";
+
 import SignIn from "./containers/SignIn";
 import SignUp from "./containers/SignUp";
 import AddBook from "./containers/AddBook";
