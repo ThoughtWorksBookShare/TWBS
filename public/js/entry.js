@@ -14,6 +14,7 @@ import Book from "./containers/Book";
 import ShowComments from "./containers/ShowComments";
 import WantedBooks from "./components/WantedBooks";
 import Personal from "./components/Personal";
+import MyBooks from "./components/MyBooks";
 
 import reducer from "./reducers/index";
 
@@ -39,7 +40,9 @@ render(<Provider store={store}>
             <Route path='books/book/addBookComment' component={Book}></Route>
             <Route path='comments' component={ShowComments}></Route>
             <Route path='wantedBooks' component={WantedBooks}></Route>
-            <Route path='personal' component={Personal}></Route>
+            <Route path='personal' component={Personal}>
+                <Route path='myBooks' component={MyBooks}></Route>
+            </Route>
         </Route>
     </Router>
 </Provider>, document.getElementById("app"));
