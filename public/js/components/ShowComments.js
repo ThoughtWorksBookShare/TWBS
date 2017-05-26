@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Header from "./Header";
 
 export default class Commments extends Component {
     componentWillMount() {
@@ -17,7 +16,6 @@ export default class Commments extends Component {
         });
         return (
             <div>
-                <Header/>
                 <div className="user">
                     <div className="headUser" id="headPortrait"><img src="../../images/user.jpg"/></div>
                     <div>用户名</div>

@@ -4,7 +4,8 @@ import {createStore, applyMiddleware} from "redux";
 import {Router, Route, IndexRoute, hashHistory} from "react-router";
 import {Provider} from "react-redux";
 
-import App from "./containers/App";
+import App from "./components/App";
+
 import SignIn from "./containers/SignIn";
 import SignUp from "./containers/SignUp";
 import AddBook from "./containers/AddBook";
@@ -14,6 +15,10 @@ import ShowComments from "./containers/ShowComments";
 import WantedBooks from "./components/WantedBooks";
 import AddDesiredBook from "./containers/AddDesiredBook"
 import Personal from "./components/Personal";
+import MyBooks from "./components/MyBooks";
+import MyWantedBooks from "./components/MyWantedBooks";
+import MyComments from "./components/MyComments";
+import PersonalInformation from "./components/PersonalInformation";
 
 import reducer from "./reducers/index";
 
@@ -42,7 +47,12 @@ render(<Provider store={store}>
             <Route path='comments' component={ShowComments}></Route>
             <Route path='wantedBooks' component={WantedBooks}></Route>
             <Route path='wantedBooks/addDesiredBook' component={AddDesiredBook}></Route>
-            <Route path='personal' component={Personal}></Route>
+            <Route path='personal' component={Personal}>
+                <IndexRoute component={PersonalInformation}/>
+                <Route path='myBooks' component={MyBooks}></Route>
+                <Route path='myWantedBooks' component={MyWantedBooks}></Route>
+                <Route path='myComments' component={MyComments}></Route>
+            </Route>
         </Route>
     </Router>
 </Provider>, document.getElementById("app"));

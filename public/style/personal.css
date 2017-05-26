@@ -1,0 +1,25 @@
+#sideBar{
+    width: 100px;
+    height: 300px;
+    margin-top: 120px;
+    margin-left: 8%;
+    border: #0099FF solid 1px;
+    text-align: center;
+}
+
+.sideBarButton{
+    margin-top: 40px;
+    font-size: 13px;
+}
+
+.sideBarButton:hover{
+    color: #f0ad4e;
+    cursor: pointer;
+}
+
+a{
+    text-decoration:none;
+    color: black;
+    font-size: 13px;
+}
+
