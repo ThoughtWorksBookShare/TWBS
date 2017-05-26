@@ -15,6 +15,9 @@ import ShowComments from "./containers/ShowComments";
 import WantedBooks from "./components/WantedBooks";
 import Personal from "./components/Personal";
 import MyBooks from "./components/MyBooks";
+import MyWantedBooks from "./components/MyWantedBooks";
+import MyComments from "./components/MyComments";
+import PersonalInformation from "./components/PersonalInformation";
 
 import reducer from "./reducers/index";
 
@@ -41,7 +44,10 @@ render(<Provider store={store}>
             <Route path='comments' component={ShowComments}></Route>
             <Route path='wantedBooks' component={WantedBooks}></Route>
             <Route path='personal' component={Personal}>
+                <IndexRoute component={PersonalInformation}/>
                 <Route path='myBooks' component={MyBooks}></Route>
+                <Route path='myWantedBooks' component={MyWantedBooks}></Route>
+                <Route path='myComments' component={MyComments}></Route>
             </Route>
         </Route>
     </Router>
