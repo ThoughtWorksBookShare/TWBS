@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router";
 
-export default class Test extends Component {
+export default class AddBook extends Component {
     getImg() {
         let files = this.imgFile.files;
 
@@ -47,9 +47,9 @@ export default class Test extends Component {
             }
         });
 
-        if (document.getElementById("imgFile").value === "" || document.getElementById("bookName").value === ""
-            || document.getElementById("bookAuthor").value === "" || document.getElementById("bookIntroduction").value === "") {
-            this.refs.tip.innerHTML = "信息不完整，请补充！"
+        if (this.imgFile.value === "" || this.bookName.value === ""
+            || this.bookAuthor.value === "" || this.bookIntroduction.value === "") {
+            this.tip.innerHTML = "信息不完整，请补充！"
         } else {
             this.props.updateBookMessage(imageDateUrl, bookName, bookAuthor, bookIntroduction, bookOwner);
         }
@@ -57,16 +57,16 @@ export default class Test extends Component {
 
     setTip() {
         let result = this.props.result;
-        if (this.refs.tip) {
+        if (this.tip) {
             if (result === 'success') {
-                this.refs.tip.innerHTML = '您已提交成功';
+                this.tip.innerHTML = '您已提交成功';
                 setTimeout(function () {
                     window.location.href = '#/books';
                 }, 1000)
             }
 
             if (result === 'fail') {
-                this.refs.tip.innerHTML = '失败，请重试'
+                this.tip.innerHTML = '失败，请重试'
             }
         }
 
@@ -88,7 +88,7 @@ export default class Test extends Component {
                         </div>
                     </div>
 
-                    <div id="tip" ref='tip'></div>
+                    <div id="tip" ref={(c) => this.tip = c}></div>
                     <button type="submit" id="submit" onClick={this.submitBook.bind(this)}>提交</button>
                     {this.setTip()}
                     <Link to="/books">
