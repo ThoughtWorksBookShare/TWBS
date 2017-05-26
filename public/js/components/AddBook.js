@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import {Link} from "react-router";
-import Header from "./Header";
-
 
 export default class Test extends Component {
     getImg() {
@@ -77,7 +75,6 @@ export default class Test extends Component {
     render() {
         return (
             <div>
-                <Header/>
                 <div className="addBook">
                     <input type="file" id="imgFile" name="file" ref={(c) => this.imgFile = c}
                            onChange={this.getImg.bind(this)}/>

@@ -5,7 +5,6 @@ export default class Personal extends Component{
     render(){
         return(
             <div>
-                <Header/>
                 Personal
             </div>
         )

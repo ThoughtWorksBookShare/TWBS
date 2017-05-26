@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {Link} from 'react-router'
 import "!style-loader!css-loader!./../../style/showBooks.css";
-import Header from "./Header";
 
 export default class Books extends Component {
 
@@ -15,7 +14,6 @@ export default class Books extends Component {
     render() {
         return (
             <div>
-                <Header/>
                <button className="upLoadBook" onClick={this.turn}>我要上传</button>
                 <BookList bookList={this.props.bookList}/>
             </div>
