@@ -2,6 +2,12 @@ import React, {Component} from "react";
 import {Link} from "react-router";
 
 export default class AddBook extends Component {
+    componentDidMount() {
+        if (!this.getCookieUser()) {
+            window.location = "#/";
+        }
+    }
+
     getImg() {
         let files = this.imgFile.files;
 
@@ -36,6 +42,18 @@ export default class AddBook extends Component {
         let bookName = this.bookName.value;
         let bookAuthor = this.bookAuthor.value;
         let bookIntroduction = this.bookIntroduction.value;
+        let bookOwner = this.getCookieUser();
+
+
+        if (this.imgFile.value === "" || this.bookName.value === ""
+            || this.bookAuthor.value === "" || this.bookIntroduction.value === "") {
+            this.tip.innerHTML = "信息不完整，请补充！"
+        } else {
+            this.props.updateBookMessage(imageDateUrl, bookName, bookAuthor, bookIntroduction, bookOwner);
+        }
+    }
+
+    getCookieUser() {
         let bookOwner;
         let allCookies = document.cookie.split("; ");
         allCookies.forEach((val) => {
@@ -46,13 +64,7 @@ export default class AddBook extends Component {
                 bookOwner = cookieValue;
             }
         });
-
-        if (this.imgFile.value === "" || this.bookName.value === ""
-            || this.bookAuthor.value === "" || this.bookIntroduction.value === "") {
-            this.tip.innerHTML = "信息不完整，请补充！"
-        } else {
-            this.props.updateBookMessage(imageDateUrl, bookName, bookAuthor, bookIntroduction, bookOwner);
-        }
+        return bookOwner;
     }
 
     setTip() {

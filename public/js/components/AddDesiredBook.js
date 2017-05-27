@@ -2,6 +2,26 @@ import React, {Component} from "react";
 import {Link} from "react-router";
 
 export default class AddDesiredBook extends Component {
+    componentDidMount() {
+        if(!this.getCookieUser()){
+            window.location = "#/";
+        }
+    }
+
+    getCookieUser() {
+        let user;
+        let allCookies = document.cookie.split("; ");
+        allCookies.forEach((val) => {
+            let cookie = val.split("=");
+            let cookieName = cookie[0];
+            let cookieValue = cookie[1];
+            if (cookieName === "user") {
+                user = cookieValue;
+            }
+        });
+        return user;
+    }
+
     getImg() {
         let files = this.desiredBookImgFile.files;
 
@@ -35,16 +55,7 @@ export default class AddDesiredBook extends Component {
         let imageDateUrl = this.props.imgdataUrl;
         let desiredBookName = this.desiredBookName.value;
         let desiredBookAuthor = this.desiredBookAuthor.value;
-        let user;
-        let allCookies = document.cookie.split("; ");
-        allCookies.forEach((val) => {
-            let cookie = val.split("=");
-            let cookieName = cookie[0];
-            let cookieValue = cookie[1];
-            if (cookieName === "user") {
-                user = cookieValue;
-            }
-        });
+        let user = this.getCookieUser();
 
         if (this.desiredBookImgFile.value === "" || this.desiredBookName.value === ""
             || this.desiredBookAuthor.value === "") {
