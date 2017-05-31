@@ -12,7 +12,7 @@ import AddBook from "./containers/AddBook";
 import ShowBooks from "./containers/ShowBooks";
 import Book from "./containers/Book";
 import ShowComments from "./containers/ShowComments";
-import WantedBooks from "./components/WantedBooks";
+import WantedBooks from "./containers/WantedBooks";
 import AddDesiredBook from "./containers/AddDesiredBook"
 import Personal from "./components/Personal";
 import MyBooks from "./components/MyBooks";
@@ -30,9 +30,10 @@ import getBook from "./middlewares/getBook";
 import addBookComment from "./middlewares/addBookComment";
 import showComments from "./middlewares/showComments";
 import addDesiredBook from "./middlewares/addDesiredBook";
+import wantedBooks from "./middlewares/wantedBooks";
 
 const middleware = applyMiddleware(signIn, signUp, addBook, showBooks, getBook,
-    addBookComment, showComments, addDesiredBook);
+    addBookComment, showComments, addDesiredBook, wantedBooks);
 const store = createStore(reducer, middleware);
 
 render(<Provider store={store}>

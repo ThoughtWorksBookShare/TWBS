@@ -9,24 +9,35 @@ function addBook(req, callback) {
     const bookAuthor = req.body.bookAuthor;
     const bookIntroduction = req.body.bookIntroduction;
     const bookOwner = req.body.bookOwner;
-    const bookStatus = false;
+    const bookStatus = true;
     const bookComments = [];
 
     if (imageDateUrl && typeof imageDateUrl === 'string') {
         const bookPicture = addBookPic(path, imageDateUrl, bookName, bookAuthor);
+
         cn.MongoClient.connect(cn.url, (err, db)=> {
             const collection = db.collection('books');
+            const usersCollection = db.collection('users');
+
             collection.insertOne({
                 bookPicture, bookName, bookAuthor,
                 bookIntroduction, bookOwner, bookStatus, bookComments
-            },(err,insertResult)=>{
-                if(insertResult.result.ok === 1){
+            }, (err, insertResult)=> {
+                if (insertResult.result.ok === 1) {
                     flag = 'success';
                 }
-                 console.log(flag);
+                console.log(flag);
                 callback(flag);
             });
 
+            usersCollection.updateOne({name: bookOwner}, {
+                $push: {
+                    "myBooks": {
+                        bookPicture, bookName, bookAuthor,
+                        bookIntroduction, bookStatus
+                    }
+                }
+            })
 
         })
 
@@ -86,7 +97,7 @@ function addBookPic(path, imageDateUrl, bookName, bookAuthor) {
         });
     });
 
-    return '../../images/bookPic/'+bookImg;
+    return '../../images/bookPic/' + bookImg;
 }
 
 function getNowFormatDate() {

@@ -8,15 +8,17 @@ function addDesiredBook(req, callback) {
     const desiredBookName = req.body.desiredBookName;
     const desiredBookAuthor = req.body.desiredBookAuthor;
     const user = req.body.user;
-    const count = 0;
+    const count = 1;
 
 
     if (imageDateUrl && typeof imageDateUrl === 'string') {
         const bookPicture = addBookPic(path, imageDateUrl, desiredBookName, desiredBookAuthor);
 
         cn.MongoClient.connect(cn.url, (err, db)=> {
-            const collection = db.collection('wantedBooks');
-            collection.insertOne({
+            const wantedBooksCollection = db.collection('wantedBooks');
+            const usersCollection = db.collection('users');
+
+            wantedBooksCollection.insertOne({
                 bookPicture, desiredBookName, desiredBookAuthor, count
             }, (err, insertResult)=> {
                 if (insertResult.result.ok === 1) {
@@ -26,8 +28,18 @@ function addDesiredBook(req, callback) {
                 callback(flag);
             });
 
+            usersCollection.updateOne({name: user}, {
+                $push: {
+                    "myWantedBooks": {
+                        bookPicture,
+                        desiredBookName,
+                        desiredBookAuthor
+                    }
+                }
+            })
+        });
 
-        })
+        // cn.MongoClient.connect(cn.url,(err,db))
 
     } else {
         console.log('没有图片数据');

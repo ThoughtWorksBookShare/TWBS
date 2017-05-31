@@ -2,6 +2,26 @@ import React, {Component} from "react";
 import {Link} from "react-router";
 
 export default class AddDesiredBook extends Component {
+    componentDidMount() {
+        if (!this.getCookieUser()) {
+            window.location = "#/";
+        }
+    }
+
+    getCookieUser() {
+        let user;
+        let allCookies = document.cookie.split("; ");
+        allCookies.forEach((val) => {
+            let cookie = val.split("=");
+            let cookieName = cookie[0];
+            let cookieValue = cookie[1];
+            if (cookieName === "user") {
+                user = cookieValue;
+            }
+        });
+        return user;
+    }
+
     getImg() {
         let files = this.desiredBookImgFile.files;
 
@@ -35,21 +55,16 @@ export default class AddDesiredBook extends Component {
         let imageDateUrl = this.props.imgdataUrl;
         let desiredBookName = this.desiredBookName.value;
         let desiredBookAuthor = this.desiredBookAuthor.value;
-        let user;
-        let allCookies = document.cookie.split("; ");
-        allCookies.forEach((val) => {
-            let cookie = val.split("=");
-            let cookieName = cookie[0];
-            let cookieValue = cookie[1];
-            if (cookieName === "user") {
-                user = cookieValue;
-            }
-        });
+        let user = this.getCookieUser();
 
         if (this.desiredBookImgFile.value === "" || this.desiredBookName.value === ""
             || this.desiredBookAuthor.value === "") {
             this.desiredBookTip.innerHTML = "信息不完整，请补充！"
-        } else {
+        }
+        else if (this.desiredBookName.value >= 20 || this.desiredBookAuthor.value >= 20) {
+            this.desiredBookTip.innerHTML = "信息过长，请删减！"
+        }
+        else {
             this.props.updateDesiredBookMessage(imageDateUrl, desiredBookName, desiredBookAuthor, user);
         }
     }
@@ -77,8 +92,14 @@ export default class AddDesiredBook extends Component {
                 <input type="file" name="file" ref={(c) => this.desiredBookImgFile = c}
                        onChange={this.getImg.bind(this)}/>
                 <div ref={(c) => this.desiredBookPreview = c}></div>
-                <div className="msgInput"><span>书名</span><input ref={(c) => this.desiredBookName = c}/></div>
-                <div className="msgInput"><span>作者</span><input ref={(c) => this.desiredBookAuthor = c}/></div>
+                <div className="msgInput">
+                    <span>书名</span>
+                    <input placeholder="请输入20字以内的书名" ref={(c) => this.desiredBookName = c}/>
+                </div>
+                <div className="msgInput">
+                    <span>作者</span>
+                    <input placeholder="请输入20字以内的作者名" ref={(c) => this.desiredBookAuthor = c}/>
+                </div>
                 <div ref={(c) => this.desiredBookTip = c}></div>
                 <button type="submit" id="submit" onClick={this.submitBook.bind(this)}>提交</button>
                 {this.setTip()}
