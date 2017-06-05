@@ -18,7 +18,7 @@ import Personal from "./components/Personal";
 import MyBooks from "./components/MyBooks";
 import MyWantedBooks from "./components/MyWantedBooks";
 import MyComments from "./components/MyComments";
-import PersonalInformation from "./components/PersonalInformation";
+import PersonalInformation from "./containers/PersonalInformation";
 
 import reducer from "./reducers/index";
 

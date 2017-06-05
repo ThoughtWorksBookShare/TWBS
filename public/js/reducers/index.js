@@ -7,5 +7,16 @@ import book from "./book";
 import showComments from "./showComments";
 import addDesiredBook from "./addDesiredBook";
 import wantedBooks from "./wantedBooks";
+import personalInformation from "./personalInformation";
 
-export default combineReducers({signIn, signUp, addBook, showBooks, book, showComments, addDesiredBook, wantedBooks});
+export default combineReducers({
+    signIn,
+    signUp,
+    addBook,
+    showBooks,
+    book,
+    showComments,
+    addDesiredBook,
+    wantedBooks,
+    personalInformation
+});
