@@ -31,9 +31,10 @@ import addBookComment from "./middlewares/addBookComment";
 import showComments from "./middlewares/showComments";
 import addDesiredBook from "./middlewares/addDesiredBook";
 import wantedBooks from "./middlewares/wantedBooks";
+import personalInformation from "./middlewares/personalInformation";
 
 const middleware = applyMiddleware(signIn, signUp, addBook, showBooks, getBook,
-    addBookComment, showComments, addDesiredBook, wantedBooks);
+    addBookComment, showComments, addDesiredBook, wantedBooks, personalInformation);
 const store = createStore(reducer, middleware);
 
 render(<Provider store={store}>

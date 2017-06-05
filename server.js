@@ -9,6 +9,7 @@ const addBookComment = require('./server/routers/addBookComment');
 const showComments = require('./server/routers/showComments');
 const addDesiredBook = require('./server/routers/addDesiredBook');
 const getWantedBooks = require("./server/routers/getWantedBooks");
+const getPersonalInformation = require("./server/routers/getPersonalInformation");
 
 const bodyParser = require('body-parser');
 
@@ -26,6 +27,7 @@ app.use('/', addBookComment);
 app.use('/', showComments);
 app.use('/', addDesiredBook);
 app.use('/', getWantedBooks);
+app.use('/', getPersonalInformation);
 
 app.listen(3000, function () {
     console.log("listen 3000!!");
