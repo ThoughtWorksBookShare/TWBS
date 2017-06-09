@@ -1,4 +1,4 @@
-export  default (state = {desiredBooks: [],result:''}, action) => {
+export  default (state = {desiredBooks: [], result: ''}, action) => {
     switch (action.type) {
         case 'GETWANTEDBOOKS':
         {

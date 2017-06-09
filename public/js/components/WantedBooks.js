@@ -26,6 +26,7 @@ export default class WantedBooks extends Component {
     increaseCount(_id) {
         let user = this.getCookieUser();
         this.props.changeCount(_id,user);
+
     }
 
     render() {

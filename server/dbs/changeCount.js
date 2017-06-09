@@ -15,6 +15,7 @@ function changeCount(req, callBack) {
         let isExistDesiredBook = false;
 
         wantedBooksCollection.findOne({_id: ObjectID(id)}, (err, result) => {
+            console.log(typeof result);
             bookName = result.desiredBookName;
             bookPicture = result.bookPicture;
             bookAuthor = result.desiredBookAuthor;
@@ -60,8 +61,6 @@ function changeCount(req, callBack) {
             });
 
         });
-
-
     })
 }
 
