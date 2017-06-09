@@ -3,11 +3,15 @@ import "!style-loader!css-loader!./../../style/personal.css";
 import {Link} from 'react-router';
 
 export default class Personal extends Component {
+
     render() {
+
         return (
-            <div>
-                <Sidebar/>
-                {this.props.children}
+            <div id="personal">
+                <div id="personalSideBar">
+                    <Sidebar/>
+                </div>
+                <div id="personalRightBar">{this.props.children}</div>
             </div>
         )
     }
@@ -15,6 +19,7 @@ export default class Personal extends Component {
 
 class Sidebar extends Component {
     render() {
+
         return (
             <div id="sideBar">
                 <div className="sideBarButton">

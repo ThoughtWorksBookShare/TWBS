@@ -2,7 +2,7 @@
     width: 100px;
     height: 300px;
     margin-top: 120px;
-    margin-left: 8%;
+    margin-left: 30%;
     border: #0099FF solid 1px;
     text-align: center;
 }
@@ -12,7 +12,7 @@
     font-size: 13px;
 }
 
-.sideBarButton:hover{
+a:hover{
     color: #f0ad4e;
     cursor: pointer;
 }
@@ -21,5 +21,23 @@ a{
     text-decoration:none;
     color: black;
     font-size: 13px;
+}
+
+#personal{
+    display: inline-block;
+    width: 100%;
+}
+
+#personalSideBar{
+    float: left;
+    width: 15%;
+    display: inline-block;
+}
+
+#personalRightBar{
+    float: left;
+    width: 80%;
+    display: inline-block;
+    margin-top: 80px;
 }
 
