@@ -61,11 +61,13 @@ export default class AddDesiredBook extends Component {
             || this.desiredBookAuthor.value === "") {
             this.desiredBookTip.innerHTML = "信息不完整，请补充！"
         }
-        else if (this.desiredBookName.value >= 20 || this.desiredBookAuthor.value >= 20) {
-            this.desiredBookTip.innerHTML = "信息过长，请删减！"
-        }
         else {
-            this.props.updateDesiredBookMessage(imageDateUrl, desiredBookName, desiredBookAuthor, user);
+            if (this.desiredBookName.value >= 20 || this.desiredBookAuthor.value >= 20) {
+                this.desiredBookTip.innerHTML = "信息过长，请删减！"
+            }
+            else {
+                this.props.updateDesiredBookMessage(imageDateUrl, desiredBookName, desiredBookAuthor, user);
+            }
         }
     }
 
