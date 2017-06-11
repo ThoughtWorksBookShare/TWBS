@@ -5,7 +5,15 @@ export default store => next => action => {
         request.get('/getWantedBooks').end((err, res) => {
             next({type: action.type, wantedBooks: res.body});
         })
-    } else {
+    }
+    else if (action.type === "CHANGECOUNT") {
+        request.post('/changeCount')
+            .send({_id: action._id, user: action.user})
+            .end((err, res) => {
+                next({type: action.type, desiredBooks: res.body})
+            })
+    }
+    else {
         next(action);
     }
 }

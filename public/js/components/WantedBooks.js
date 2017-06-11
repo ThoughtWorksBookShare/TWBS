@@ -9,6 +9,26 @@ export default class WantedBooks extends Component {
         window.location = "#/wantedBooks/addDesiredBook";
     }
 
+    getCookieUser() {
+        let user;
+        let allCookies = document.cookie.split("; ");
+        allCookies.forEach((val) => {
+            let cookie = val.split("=");
+            let cookieName = cookie[0];
+            let cookieValue = cookie[1];
+            if (cookieName === "user") {
+                user = cookieValue;
+            }
+        });
+        return user;
+    }
+
+    increaseCount(_id) {
+        let user = this.getCookieUser();
+        this.props.changeCount(_id,user);
+
+    }
+
     render() {
         const desiredBooks = this.props.desiredBooks.map((ele, index) => {
             return <div key={index}>
@@ -16,7 +36,7 @@ export default class WantedBooks extends Component {
                 <div>{ele.desiredBookName}</div>
                 <div>{ele.desiredBookAuthor}</div>
                 <div>{ele.count}人想看</div>
-                <button>+</button>
+                <button onClick={this.increaseCount.bind(this,ele._id)}>+</button>
             </div>
         });
         return (
